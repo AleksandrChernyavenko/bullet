@@ -1,0 +1,29 @@
+version: 2.0
+
+jobs:
+  test:
+    docker:
+      - image: circleci/node:latest
+    working_directory: ~/node
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dependencies-cache-v1-{{ arch }}-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
+            - dependencies-cache-v1-{{ arch }}-{{ .Branch }}
+            - dependencies-cache-v1
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - save_cache:
+          key: dependencies-cache-v1-{{ arch }}-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - node_modules
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
+  quality:
+    jobs:
+      - quality
