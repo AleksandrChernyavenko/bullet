@@ -7,6 +7,24 @@ jobs:
     working_directory: ~/node
     steps:
       - checkout
+      - run:
+          name: "What branch am I on now?"
+          command: echo $CIRCLE_BRANCH
+      - run:
+          name: "CIRCLE_BUILD_NUM"
+          command: echo $CIRCLE_BUILD_NUM
+      - run:
+          name: "CIRCLE_BUILD_URL"
+          command: echo $CIRCLE_BUILD_URL
+      - run:
+          name: "CIRCLE_COMPARE_URL"
+          command: echo $CIRCLE_COMPARE_URL
+      - run:
+          name: "CIRCLE_PROJECT_REPONAME"
+          command: echo $CIRCLE_PROJECT_REPONAME
+      - run:
+          name: "CIRCLE_PROJECT_USERNAME"
+          command: echo $CIRCLE_PROJECT_USERNAME
       - restore_cache:
           keys:
             - dependencies-cache-v1-{{ arch }}-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
