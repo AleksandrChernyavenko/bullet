@@ -73,5 +73,6 @@ android/app/libs
 /ios/SealJobsEmployee.xcarchive
 /com.sealjobs.sealthydeal-*.dSYM.zip
 /fastlane/report.xml
+/.scannerwork
 
 .env
