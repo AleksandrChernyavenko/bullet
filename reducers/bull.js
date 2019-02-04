@@ -96,6 +96,7 @@ export default function (
 			});
 
 			bull.loading 		= false;
+			bull.loading 		= false;
 			bull.competitors 	= action.currencies.length;
 
 			return Object.assign (
