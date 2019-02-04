@@ -43,10 +43,10 @@ jobs:
 					./../sonar-scanner-3.3.0.1492-linux/bin/sonar-scanner
 
 workflows:
-	version: 2
+  version: 2
 	test:
-		jobs:
-			- test
-	quality:
-		jobs:
-			- quality
+	  jobs:
+		- test
+  quality:
+	  jobs:
+		- quality
