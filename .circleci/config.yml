@@ -38,7 +38,9 @@ jobs:
 					- dependencies-cache-v1
 		  - run:
 				name: Run Sonar Scanner
-				command: sonar-scanner
+				command: |
+					cd ~/node
+					./../sonar-scanner-3.3.0.1492-linux/bin/sonar-scanner
 
 workflows:
 	version: 2
