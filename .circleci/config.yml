@@ -24,6 +24,3 @@ workflows:
   test:
     jobs:
       - test
-  quality:
-    jobs:
-      - quality
