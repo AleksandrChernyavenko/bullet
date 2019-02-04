@@ -21,8 +21,8 @@ jobs:
             - node_modules
   quality:
     docker:
-      - image: circleci/openjdk:latest
       - image: circleci/node:latest
+      - image: circleci/openjdk:latest
     working_directory: ~/node
     steps:
       - checkout
