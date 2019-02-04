@@ -27,9 +27,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install NodeJS
-          command: curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash - && sudo apt-get install -y nodejs
-      - run:
           name: Install Sonar Scanner
           command: cd && sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip && sudo unzip sonar-scanner-cli-3.3.0.1492-linux.zip && sudo rm sonar-scanner-cli-3.3.0.1492-linux.zip
       - restore_cache:
@@ -37,6 +34,13 @@ jobs:
             - dependencies-cache-v1-{{ arch }}-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
             - dependencies-cache-v1-{{ arch }}-{{ .Branch }}
             - dependencies-cache-v1
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - save_cache:
+          key: dependencies-cache-v1-{{ arch }}-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - node_modules
 workflows:
   version: 2
   quality:
