@@ -39,9 +39,6 @@ jobs:
             - dependencies-cache-v1
 workflows:
   version: 2
-  test:
-    jobs:
-      - test
   quality:
     jobs:
       - quality
