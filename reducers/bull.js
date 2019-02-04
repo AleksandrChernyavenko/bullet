@@ -77,6 +77,34 @@ export default function (
 				bull
 			);
 
+		case constants.set 		:
+
+			let bull = {
+					rating 		: 0
+				};
+
+			action.currencies.forEach (( currency ) => {
+
+				if (
+					! isNaN ( currency.rating ) &&
+					currency.rating > bull.rating
+				) {
+
+					bull = currency;
+				}
+
+			});
+
+			bull.loading 		= false;
+			bull.loading 		= false;
+			bull.competitors 	= action.currencies.length;
+
+			return Object.assign (
+				{} 		,
+				state 	,
+				bull
+			);
+
 		default :
 			return state;
 	}
